@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang= "de">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <!--Project-Links-->
+        <script src="/static/styles/sort.js"></script>
+        <link href="/static/styles/style.css" rel="stylesheet">
+        <title>Vogelschau | {% block title %}{% endblock %}</title>
+        <link href="/static/picture.ico" rel="icon">
+    </head>
+
+    <body>
+        <!--Navigation-->
+        <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-info">
+            <a href="/" class="navbar-left"><img class="navpicture" src="/static/picture.ico"></a>
+            <span class="navbar-text">Vogelschau</span>
+            <!--Toggle-Container-->
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapse_target">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/all">Alle Vögel des Jahres</a>
+                    </li>
+                </ul>
+                <!--Searchbox-->
+                <form autocomplete="off" action="/searchName" method="POST" class="form-inline">
+                    <div class="autocomplete">
+                        <input id="myInput" class="form-control mr-sm-2" type="search" name="name" placeholder="Vogel suchen" aria-label="Search">
+                    </div>
+                    <button class="btn btn-primary my-2 my-sm-0" type="submit">Suche!</button>
+                </form>
+            </div> 
+        </nav>
+        <!--Script für Searchbox-Autocomplete-->
+        <script>
+            autocomplete(document.getElementById("myInput"), vögel);
+        </script>
+        <!--Suchformular-->        
+        <div class="grid">
+            <h2 class="text">Alle Vögel des Jahres</br>2008 bis 2019</h2>
+            <div class="form">
+                <form action="/search" method="POST">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputZiel">Filtern nach</label>
+                            <select id="inputZiel" class="form-control" name="big">
+                                <option value="100" selected>Größe (in cm)</option>
+                                <option value="20">10 - 20</option>
+                                <option value="30">20 - 30</option>
+                                <option value="40">30 - 40</option>
+                                <option value="50">40+</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputOrt">Filtern nach</label>
+                            <select id="inputOrt" class="form-control" name="span">
+                                <option value="100" selected>Spannweite (in cm)</option>
+                                <option value="30">20 - 30</option>
+                                <option value="40">30 - 40</option>
+                                <option value="50">40 - 50</option>
+                                <option value="60">50 - 60</option>
+                                <option value="70">60 - 70</option>
+                                <option value="80">70+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary form-group col-md-6">Search!</button>
+                    
+                </form>
+            </div>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <h2 class="message">{{ message }}</h2>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+        </div>
+
+        {% block main %}{% endblock %}
+
+    </body>
+    
+</html>

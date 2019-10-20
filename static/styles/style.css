@@ -1,0 +1,116 @@
+body { 
+    
+    overflow-x: hidden;
+    background-color: lightblue;   
+}
+
+.grid {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 5% 25% 35% 5%;
+    grid-template-rows: 10% 20% 10% 10% 10% 20% 20% 10% 10% 10%;
+    background-image: url(https://cdn.pixabay.com/photo/2017/11/15/20/41/flock-2952495_960_720.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
+.text {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    white-space: nowrap;
+    color: rgb(29, 150, 168);
+    text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
+}
+
+.form {
+    width: 100%;
+    grid-column: 3 / 4;
+    grid-row: 6 / 7;
+}
+@media (max-width: 768px) {
+    .form { 
+        grid-row: 5 / 6;  
+    }
+    .message {
+        font-size: 18px;
+    }
+}
+
+label {
+    background-color: lightblue;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+footer {
+    background-color: rgb(29, 150, 168);
+    height: 4%;
+    color: rgb(226, 226, 226);
+}
+
+.navpicture {
+    height: 40px;
+}
+
+.bildhöhe {
+    height: 70px;
+}
+
+.message {
+    grid-column: 3 / 4;
+    grid-row: 7 / 8;
+    background-color: lightblue;
+    height: 50px;
+    border: 1px solid rgb(29, 150, 168);
+    border-radius: 1em;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    padding-bottom: 1em;
+}
+
+/*Autocomplete für Suchfeld (https://www.w3schools.com/howto/howto_js_autocomplete.asp)*/
+.autocomplete {
+    /*the container must be positioned relative:*/
+    position: relative;
+    display: inline-block;
+  }
+  input {
+    border: 1px solid transparent;
+    background-color: lightblue;
+    padding: 10px;
+    font-size: 16px;
+  }
+  .autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position and width of autocomplete items:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 96%;
+  }
+  .autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgb(29, 150, 168);
+    color: lightblue;
+    border-bottom: 1px solid #d4d4d4;
+  }
+  .autocomplete-items div:hover {
+    /*when hovering an item:*/
+    background-color: lightblue;
+    color: rgb(29, 150, 168);
+  }
+  .autocomplete-active {
+    /*when navigating through the items using the arrow keys:*/
+    background-color: lightblue !important;
+    color: rgb(29, 150, 168) !important;
+  }

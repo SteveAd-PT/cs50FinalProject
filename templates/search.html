@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Ergebnisse
+{% endblock %}
+
+{% block main %}
+<main class="container p-6"> 
+    <p>{{  suche  }}</p>
+
+    <table id="table" class="table table-hover table-responsive">
+        <thead>
+            <tr>
+                <th style="cursor: pointer;" onclick="sortTable(0)">Name</th>
+                <th style="cursor: pointer;" onclick="sortTable(1)">Wissenschaftlicher Name</th>
+                <th>Familie</th>
+                <th>Größe in cm</th>
+                <th>Spannweite in cm</th>
+                <th>Vogel des Jahres in</th>
+                <th>Bild</th>
+            </tr>
+        </thead>
+        {% for data in datas %}
+        <tbody>    
+            <tr>
+                <td>{{ data.name }}</td>
+                <td>{{ data.fachname }}</td>
+                <td>{{ data.familie }}</td>
+                <td>{{ data.größe }}</td>
+                <td>{{ data.spann }}</td>
+                <td>{{ data.jahr }}</td>
+                <td><img class="bildhöhe" src="{{ data.bild }}" alt="{{ data.name }}"></td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+
+    <footer class="small text-center fixed-bottom">
+        <p>Alle Informatuinen entstammen der deutschsprachigen Wikipedia</p>
+    </footer>
+</main>
+{% endblock %}
